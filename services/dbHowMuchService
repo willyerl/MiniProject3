@@ -1,0 +1,41 @@
+const carbonCarModel = require('../models/modelscars.js')
+const carbonTrees = require('../models/modelstree.js')
+var dataMiddleware = require('../middleware/middldwareCO2.js');
+var treeMiddleware = require('../middleware/middlewaretree.js');
+const MongoClient = require("mongodb");
+
+async function MuchCObyCollection(req, res){
+    const cars = await carbonCarModel.find({ })    
+    let CO2 = 0; 
+    for(let j of cars){
+        
+        let APIres = await dataMiddleware.middlAllModels(j.make , j.models)
+        let Kgs = APIres.data.co2e_kg
+        CO2 = CO2 + Kgs
+    }
+    console.log(CO2)
+    let result = await treeMiddleware.howManytrees(CO2)
+    carbonTrees.insertMany([{
+        CO2: CO2,
+        how_many_trees: result.numberOfTrees
+    }
+    ]).then(function () {
+        console.log("Data inserted")  // Success
+    }).catch(function (error) {
+        console.log(error)      // Failure
+    });
+    
+    res.json(result)
+    
+}
+
+async function byChoiceCar(make, model, res){
+        let APIres = await dataMiddleware.middlAllModels(make , model)
+        let Kgs = APIres.data.co2e_kg
+        
+        let result = await treeMiddleware.howManytrees(Kgs)
+    
+    res.json(result)
+}
+
+module.exports = { MuchCObyCollection , byChoiceCar }

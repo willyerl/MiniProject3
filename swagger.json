@@ -1,0 +1,162 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "mini Project 3",
+        "description": "My User Project Application API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "miniProject3",
+            "description": "API for compare CO2 generate by cars and how many trees are necessary"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/carbon/insert": {
+            "get": {
+                "tags": [
+                    "Cars Service"
+                ],
+                "summary": "For get all the cars brends",
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to find all the cars brends"
+                    }
+                }
+            }
+        },
+        "/carbon/models": {
+            "post": {
+                "tags": [
+                    "Cars Service"
+                ],
+                "summary": "For post all the models of a specific cars brends",
+                "parameters": [
+                    {
+                        "name": "maker",
+                        "in": "query",
+                        "description": "the Car Brend"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to post on the data base all the models of a specific brend"
+                    }
+                }
+            }
+        },
+        "/carbon/specificModels": {
+            "post": {
+                "tags": [
+                    "Cars Service"
+                ],
+                "summary": "For post aspecific model",
+                "parameters": [
+                    {
+                        "name": "maker",
+                        "in": "query",
+                        "description": "the brand"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "the model"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to post on the data base a specific model"
+                    }
+                }
+            }
+        },
+        "/carbon/clean": {
+            "delete": {
+                "tags": [
+                    "empt collection"
+                ],
+                "summary": "clean all the car wich had been save",
+               
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to empty a collection of car models"
+                    }
+                }
+            }
+        },
+        "/carbon/deletOne": {
+            "delete": {
+                "tags": [
+                    "empt collection"
+                ],
+                "summary": "clean a specific car wich had been save",
+                "parameters": [
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "the model"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to delet a car "
+                    }
+                }
+            }
+        },
+        "/carbon/howMuch": {
+            "get": {
+                "tags": [
+                    "CO2 Service"
+                ],
+                "summary": "For get the value of CO2 produced by the cars on the tabel on a trip of 10km",
+                
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to calculate the CO2 all cars on the tabel, adding at the data base and how many trees are necesserie"
+                    }                   
+                }
+            }
+        },
+        "/carbon/byChoice": {
+            "get": {
+                "tags": [
+                    "CO2 Service"
+                ],
+                "summary": "For get the value of CO2 produced by a specific cars on a trip of 10km",
+                "parameters": [
+                    {
+                        "name": "maker",
+                        "in": "query",
+                        "description": "the brand"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "the model"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This service allows you to calculate the CO2 a specific cars, and add at the data base how many trees are necesserie"
+                    }                   
+                }
+            }
+        }
+    }
+}
