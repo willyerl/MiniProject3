@@ -8,8 +8,8 @@ const howManytrees = async (CO2) => {
         url: 'https://carbonfootprint1.p.rapidapi.com/TreeEquivalent',
         params: {weight: CO2, unit: 'kg'},
         headers: {
-            'X-RapidAPI-Key': 'f553b49b9cmsh1925d308b2dbde2p1f473djsn2347dd397149',
-            'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
+            'X-RapidAPI-Key': 'api-key',
+            'X-RapidAPI-Host': 'api-key'
           }
       };
    
