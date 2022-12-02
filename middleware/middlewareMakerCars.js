@@ -7,8 +7,8 @@ const allvehicle = async () => {
         method: 'GET',
         url: 'https://carbonsutra1.p.rapidapi.com/vehicle_makes',
         headers: {
-          'X-RapidAPI-Key': 'f553b49b9cmsh1925d308b2dbde2p1f473djsn2347dd397149',
-          'X-RapidAPI-Host': 'carbonsutra1.p.rapidapi.com'
+          'X-RapidAPI-Key': 'api-key',
+          'X-RapidAPI-Host': 'api-key'
         }
       };
    
